@@ -38,6 +38,10 @@ do
         continue
     fi
 
+    set +e
+    strip_cr "$prepatchesdir/$file" > /dev/null
+    set -e
+
     echo "--==-- Applying PRE-SOURCE patch: $file --==--"
     $patch -p0 < "$prepatchesdir/$file"
 done
@@ -65,7 +69,7 @@ do
 
     echo "Patching $file < $patchFile"
     set +e
-    strip_cr "$nms/$file" > /dev/null
+    strip_cr "$nms/$file" "$cb/$file" "$patchFile" > /dev/null
     set -e
 
     "$patch" -d src/main/java -p 1 < "$patchFile"
