@@ -114,6 +114,7 @@ importLibrary com.mojang datafixerupper com/mojang/datafixers DataFixerBuilder.j
 importLibrary com.mojang datafixerupper com/mojang/datafixers/util Either.java
 importLibrary com.mojang datafixerupper com/mojang/serialization/codecs KeyDispatchCodec.java
 importLibrary com.mojang datafixerupper com/mojang/serialization Dynamic.java
+importLibrary com.mojang brigadier com/mojang/brigadier/builder ArgumentBuilder.java
 
 ########################################################
 ########################################################
