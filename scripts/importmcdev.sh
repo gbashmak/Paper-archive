@@ -60,9 +60,9 @@ function importLibrary {
 )
 
 
-files=$(cat "$basedir/Spigot-Server-Patches/"* | tr -d '\r' | grep "+++ b/src/main/java/net/minecraft/" | sort | uniq | sed 's/\+\+\+ b\/src\/main\/java\/net\/minecraft\///g')
+files=$(cat "$basedir/Spigot-Server-Patches/"* | grep "+++ b/src/main/java/net/minecraft/" | sort | uniq | sed 's/\+\+\+ b\/src\/main\/java\/net\/minecraft\///g')
 
-nonnms=$(grep -R "new file mode" -B 1 "$basedir/Spigot-Server-Patches/" | tr -d '\r' | grep -v "new file mode" | grep -oE --color=none "net\/minecraft\/.*.java" | sed 's/.*\/net\/minecraft\///g')
+nonnms=$(grep -R "new file mode" -B 1 "$basedir/Spigot-Server-Patches/" | grep -v "new file mode" | grep -oE --color=none "net\/minecraft\/.*.java" | sed 's/.*\/net\/minecraft\///g')
 function containsElement {
 	local e
 	for e in "${@:2}"; do
@@ -110,6 +110,7 @@ fi
 
 # dont forget \ at end of each line but last
 importLibrary com.mojang authlib com/mojang/authlib yggdrasil/YggdrasilGameProfileRepository.java
+importLibrary com.mojang brigadier com/mojang/brigadier/builder ArgumentBuilder.java
 importLibrary com.mojang datafixerupper com/mojang/datafixers DataFixerBuilder.java
 importLibrary com.mojang datafixerupper com/mojang/datafixers/util Either.java
 importLibrary com.mojang datafixerupper com/mojang/serialization/codecs KeyDispatchCodec.java
